@@ -56,8 +56,10 @@ the original evidence. Do not claim distributed exactly-once execution.
   executable requires a runtime. We still need reset baselines and tests showing
   the artifact cannot find or use tools, caches, or network access provided by
   that instrumentation.
-- Startup service integration, baseline discovery, actual workload architecture,
-  tracing, offline execution, and real download/desktop launch remain open gates.
+- Reusable startup packaging, full supervisor qualification, baseline discovery,
+  actual workload architecture, tracing, offline execution, and real
+  download/desktop launch remain open gates. Individual host supervision is now
+  deployed; the [validation matrix](../validation.md) tracks its evidence.
 
 ## References
 

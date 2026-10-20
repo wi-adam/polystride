@@ -1,6 +1,6 @@
 {
-  "id": "control-linux-x64-001",
-  "host_id": "linux-x64-01",
+  "id": "control-host-example-001",
+  "host_id": "host-example-001",
   "source_revision": "REPLACE_WITH_EXACT_SOURCE_REVISION_AND_DIRTY_TREE_EVIDENCE",
   "args": ["bytes"],
   "env": {},

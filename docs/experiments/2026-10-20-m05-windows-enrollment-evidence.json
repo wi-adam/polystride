@@ -1,0 +1,95 @@
+{
+  "date": "2026-10-20",
+  "scope": "Windows resident-agent enrollment and malformed-input control; positive execution pending",
+  "source_revision": "19e367414b32e2ed7213a66cfb72d2287ade2b78",
+  "remote_operator_report": {
+    "provenance": "User-relayed host-003 enrollment summary; local build logs not independently inspected",
+    "checks": {
+      "format": "pass",
+      "pedantic_clippy": "pass",
+      "workspace_tests": "pass: 16 behavioral tests",
+      "native_builds": "pass"
+    },
+    "supervision": "Non-elevated per-user Scheduled Task; interactive logon required",
+    "native_control": {
+      "sha256": "3c4e7d973f6e3686b19f58a4aa26f6c6dac2a9a9763d909189763b52ce7b8a1d",
+      "size_bytes": 198144,
+      "coordinator_received_binary": false
+    }
+  },
+  "report": {
+    "protocol": 1,
+    "public_job_id": "deploy-20261020-host-003-invalid",
+    "public_host_id": "host-003",
+    "source_job_sha256": "d701090bf7084c5f3b8f7438b203765984efb84df8ed68db2e2278cea68a603a",
+    "agent_sha256": "380817afc8d1278834a9c544adc0cc6da4b68f1591e96df2c0b9efc2d4f75e3c",
+    "agent_version": "0.1.0",
+    "agent_os": "windows",
+    "agent_arch": "x86_64",
+    "recorded_unix_ms": 1792527714607,
+    "started_unix_ms": 1792527714608,
+    "elapsed_ms": 0,
+    "launch_backend": "rust_std_process_command",
+    "invocation": [
+      "payload.exe"
+    ],
+    "artifact_staged": true,
+    "artifact_size_before": 128,
+    "artifact_sha256_before": "38723a2e5e8a17aa7950dc008209944e898f69a7bd10a23c839d341e935fd5ca",
+    "artifact_size_after": 128,
+    "artifact_sha256_after": "38723a2e5e8a17aa7950dc008209944e898f69a7bd10a23c839d341e935fd5ca",
+    "exit_code": null,
+    "termination": null,
+    "timed_out": false,
+    "output_limit_exceeded": false,
+    "stdout": {
+      "bytes": [],
+      "observed_size": 0,
+      "truncated": false
+    },
+    "stderr": {
+      "bytes": [],
+      "observed_size": 0,
+      "truncated": false
+    },
+    "outcome": "fail",
+    "detail": "spawn failed: The file or directory is corrupted and unreadable. (os error 1392)",
+    "qualifications": [
+      "Only the recipe's behavior is assessed; a pass is not platform acceptance.",
+      "Workload CPU translation/native execution: unknown; agent target is not workload evidence.",
+      "Host baseline is operator-declared; cleanliness, security state and CPU features are not audited.",
+      "Rust Command backend is not yet certified as a strict no-shell-fallback launcher on every host.",
+      "Desktop launch, quarantine/download, signing, offline execution and helper-cache state: not tested.",
+      "Environment cleared, then recipe entries applied; HOME/TMP are per-run. Windows SystemRoot is inherited.",
+      "Output captured to files and sampled every 10 ms; storage use is not a hard quota.",
+      "Only the direct child is supervised; descendant containment, disk/network tracing and cleanup are not implemented.",
+      "Payload bytes are staged as payload.exe; browser metadata and original permission bits are not transferred."
+    ],
+    "baseline_declared": {
+      "os": "windows",
+      "os_version": "Windows 11 Pro 25H2 (10.0.26200.9711)",
+      "hardware_arch": "x86_64",
+      "machine_kind": "physical",
+      "public_baseline_id": "deployment-2026-10-20-host-003"
+    }
+  },
+  "redactions": [
+    "Detailed private host inventory omitted from baseline notes",
+    "Enrollment token hash and private deployment paths omitted",
+    "Operational host, job, and baseline IDs replaced with opaque public aliases"
+  ],
+  "acceptance": {
+    "authenticated_job_delivery_and_report": "pass",
+    "malformed_input_rejection": "pass: expected failed recipe retained",
+    "positive_native_control": "not tested through coordinator",
+    "timeout_control": "not tested on Windows",
+    "restart_recovery": "not tested on Windows",
+    "portable_artifact": "not tested"
+  },
+  "source_report_sha256": "c29ace74f4b60fe745a9b51846ff4c14c224cdc62ba72793831b7d910ee35b8f",
+  "publication": {
+    "format": "sanitized_evidence_extract_v1",
+    "identity_policy": "Opaque public host, job, and baseline IDs replace operational identifiers; lookup remains private.",
+    "digest_scope": "source_report_sha256 and source_job_sha256 identify original private evidence, not this edited extract. Artifact and agent hashes and observations are unchanged."
+  }
+}

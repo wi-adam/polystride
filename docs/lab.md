@@ -4,6 +4,12 @@ Status: initial Rust implementation for trusted single-process probes.
 The six-host fleet and the full M0.5 acceptance gates are not qualified.
 The product's identical-artifact goal is unchanged.
 
+Current deployment: `host-001` runs the coordinator and a macOS ARM64 agent;
+`host-002` runs a Linux x86-64 agent; `host-003` runs a Windows x86-64 agent.
+The first two have native controls and service-restart evidence. Windows has
+authenticated malformed-input evidence, with positive controls and recovery
+qualification pending. See the [validation matrix](validation.md).
+
 ## Topology
 
 ```text
@@ -51,8 +57,12 @@ ran natively. For example, Windows can translate x64 programs on ARM; see
 The current `baseline` is operator-declared: OS/version, hardware architecture,
 physical/VM/emulator/unknown, baseline record ID, and notes. The report separately
 records the agent's compile target and binary hash. Workload translation status
-remains **unknown**. Keep detailed baseline records outside Git if they contain
-sensitive inventories.
+remains **unknown**. Keep detailed machine inventories outside Git; publish only
+the reviewed baseline facts needed to interpret an experiment.
+
+Use opaque public host IDs in published evidence and keep operational names,
+addresses, and identity mappings private. Follow [the publication policy](public-evidence.md),
+including its rules for immutable raw reports and sanitized extracts.
 
 Before M1, add verified host discovery, native controls on each target, strict
 launch backends, whole-process-tree supervision, clean reset procedures, and
@@ -111,6 +121,9 @@ absolute paths are recommended for deployed agents.
    encoded as hex. Put it in that agent's `token_file`, with owner-only access.
    Put SHA-256 of the token's UTF-8 text **without trailing whitespace** in the
    coordinator's `hosts` map. Tokens are not command-line arguments.
+   For a new deployment, choose an opaque host ID independent of its hostname.
+   Keep tokens, enrollment hashes, certificate metadata, and endpoints out of
+   public reports and configuration examples.
 3. Set a reachable bind address on the coordinator, the matching TLS name on each
    agent, and private writable state directories. Preserve the token, directory,
    and baseline identity across normal agent restarts.
@@ -127,11 +140,18 @@ performs one poll and, if assigned, one execution/report attempt, then exits.
 Its exit status reflects transport/agent operation; read the report's `outcome`
 for whether the tested binary passed.
 
-The current executable is a foreground process. Native service installers,
-systemd/launchd units, and Windows SCM integration are not implemented. Do not
-register it directly as a Windows service and assume it implements SCM callbacks.
-Use foreground sessions for initial host qualification; add and test the
-appropriate supervisor before unattended operation.
+The executable is a foreground process. The existing deployments use user
+LaunchAgents on `host-001`, systemd on `host-002`, and a non-elevated per-user
+Scheduled Task on `host-003`. The macOS and Windows deployments require an
+interactive login; the coordinator also requires its host to remain awake.
+The Linux service is enabled at boot. Mac/Linux service restarts were exercised;
+Windows restart behavior and full host-reboot recovery remain unqualified.
+
+Reusable native installers and Windows SCM integration are not implemented in
+the repository. Do not register the executable directly as a Windows service
+and assume it implements SCM callbacks. Initial qualification and supervisor
+changes need actual execution evidence on the affected host. Keep operational
+service configurations private; publish sanitized examples if packaging them.
 
 Host enrollment and token rotation are local configuration edits; restart the
 coordinator to load them. There is no auto-enrollment or remote submission API.

@@ -16,9 +16,16 @@ The new `polystride-lab` component delivers and runs ordinary test executables
 through resident agents that connect back to a TLS coordinator. This is an initial
 research harness; it does not establish portable executable support.
 
-Before M1, qualify the testing infrastructure and enroll the execution hosts.
-One file running through a shell, an installed loader, or CPU emulation is useful
-evidence, but each qualification must be recorded.
+The macOS ARM64 and Linux x86-64 lab hosts have completed native controls and
+service-restart checks. The Windows x86-64 runner is enrolled and has returned
+a malformed-input report; positive and timeout controls through the coordinator
+remain pending. Three other OS/CPU targets remain unenrolled. See the
+[infrastructure matrix](docs/validation.md#m05-infrastructure-qualification)
+for public host IDs and evidence.
+
+Before M1, finish qualification of the testing infrastructure and remaining
+hosts. One file running through a shell, an installed loader, or CPU emulation
+is useful evidence, but each qualification must be recorded.
 
 ## Approach
 
@@ -36,6 +43,7 @@ See:
 - [Architecture and unresolved questions](docs/architecture.md)
 - [Validation contract and target matrix](docs/validation.md)
 - [Execution lab design and runbook](docs/lab.md)
+- [Public evidence and host privacy](docs/public-evidence.md)
 - [Initial architecture decision](docs/decisions/0001-start-with-a-driver.md)
 - [Contributor and agent guidance](AGENTS.md)
 
@@ -75,8 +83,9 @@ GOALS.md           project objectives, milestones, and deferred scope
 ```
 
 Generated binaries and local evidence go under `artifacts/`, which is ignored.
-Commit concise, sanitized experiment reports with hashes and exact source
-revisions when experiments begin.
+Commit concise, sanitized experiment reports with hashes, exact source
+revisions, and opaque public host IDs. Keep operational identities and their
+mapping outside tracked files; follow the [publication rules](docs/public-evidence.md).
 
 ## Prior art
 
@@ -92,5 +101,5 @@ capabilities. Pin upstream revisions when an experiment relies on them.
 
 ## Distribution
 
-This is a local research repository. Package publication is disabled. An
-open-source license and public hosting destination have not yet been selected.
+This research repository is publicly hosted on GitHub. Package publication is
+disabled; a license and release policy have not yet been selected.

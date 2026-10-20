@@ -20,19 +20,29 @@ Host-native lab agents and their control programs are also outside this matrix.
 Track lab qualification independently of portable-artifact acceptance.
 [The lab runbook](lab.md) describes the implementation and remaining gates.
 
-| Environment | Lab evidence | Qualification |
-| --- | --- | --- |
-| Local macOS ARM64 developer machine | TLS delivery, execution, report collection, failed controls | Developer baseline; implicit shell fallback observed |
-| Linux x86-64 / ARM64 | Not tested | Agent deployment and native controls open |
-| Windows x86-64 / ARM64 | Not tested | Agent deployment and native controls open |
-| macOS x86-64 | Not tested | Agent deployment and native controls open |
+| Public host ID | Environment | Lab evidence | Qualification |
+| --- | --- | --- | --- |
+| `host-001` | macOS ARM64 developer machine | TLS delivery, native controls, failed controls, LaunchAgent deployment and reconnection after restart | Developer baseline; implicit shell fallback observed |
+| `host-002` | Linux x86-64 staging host | TLS delivery, native controls, failed controls, systemd deployment and reconnection after restart | Existing host, not a clean baseline; strict launch qualification open |
+| `host-003` | Windows x86-64 developer machine | Resident runner enrolled; authenticated delivery and malformed-input report collected | Positive native controls and Windows restart qualification pending |
+| Unassigned | Linux ARM64 | Not tested | Agent deployment and native controls open |
+| Unassigned | Windows ARM64 | Not tested | Agent deployment and native controls open |
+| Unassigned | macOS x86-64 | Not tested | Agent deployment and native controls open |
 
-The local result does not certify a strict direct-launch backend or a clean
-macOS baseline. See the [initial lab report](experiments/2026-10-20-m05-local-tls.md).
+Public IDs are publication aliases, not hostnames or necessarily live protocol
+IDs. Their operational mapping stays private. Follow
+[the public evidence policy](public-evidence.md) for reports and manifests.
+
+These results do not certify a strict direct-launch backend or clean host
+baselines. See the [initial lab report](experiments/2026-10-20-m05-local-tls.md)
+and the [Mac/Linux deployment report](experiments/2026-10-20-m05-host-deployment.md).
+The [Windows enrollment report](experiments/2026-10-20-m05-windows-enrollment.md)
+records the subsequent Windows connection and its remaining verification gates.
 
 ## Record per experiment
 
 - Date, Polystride source commit, upstream revisions, and exact build commands.
+- Opaque public host IDs; keep their operational mapping private.
 - Build host, compiler/linker versions, inputs, artifact size, and SHA-256.
 - Test host OS build, CPU architecture, baseline CPU features, and installed tools.
 - Whether any host configuration differs from a clean installation.
@@ -76,7 +86,10 @@ a passing result.
 Store generated binaries and raw local logs in ignored `artifacts/` directories.
 Commit concise reports under `docs/experiments/` when experiments exist, including
 hashes, source revisions, commands, host baselines, failures, and qualifications.
-Do not commit credentials or secret-bearing host inventories.
+Do not commit credentials, operational host identities/addresses, or detailed
+private inventories. Follow [the public evidence policy](public-evidence.md).
+Keep raw evidence immutable; label public ID substitutions and source hashes
+explicitly in sanitized extracts.
 
 The [initial M0.5 report](experiments/2026-10-20-m05-local-tls.md) concerns test
 infrastructure only. No portable-artifact experiment has been accepted.

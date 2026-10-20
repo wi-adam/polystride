@@ -74,6 +74,13 @@ It is not yet the accepted M1 verification environment. See
 [the lab design and runbook](docs/lab.md) and
 [ADR 0002](docs/decisions/0002-pull-based-execution-lab.md).
 
+Current deployment evidence: `host-001` (macOS ARM64) and `host-002` (Linux
+x86-64) have native controls and service-restart checks; `host-003` (Windows
+x86-64) has enrollment and malformed-input evidence. Windows positive controls
+and restart qualification remain pending, and Linux ARM64 is not yet enrolled.
+The combined fleet and qualification gates above therefore remain open. See
+the [infrastructure matrix](docs/validation.md#m05-infrastructure-qualification).
+
 ### M1 — Prove the bootstrap boundary
 
 - [ ] Select and pin an APE baseline.
@@ -114,7 +121,8 @@ the chosen runtime requires it. Ordinary target-specific builds are controls.
 - [ ] Resolve signing and notarization for the selected design.
 - [ ] Test read-only artifact locations and restricted temporary directories.
 - [ ] Automate regression checks across supported OS versions and CPUs.
-- [ ] Select a license, public hosting, and a release policy.
+- [x] Establish a public source repository.
+- [ ] Select a license and a release policy.
 
 ## Initially deferred
 
@@ -129,6 +137,8 @@ identical bytes on different hosts is a separate later property.
 
 ## Next task
 
-Complete M0.5's launch-backend and supervision gates, then enroll and qualify the
-test hosts. Run the M1 bootstrap experiment only with its exact host baselines and
-launch methods recorded.
+Transfer and verify the Windows native control for coordinator-driven positive
+and timeout tests, then qualify Windows restart behavior. Complete M0.5's strict
+launch-backend and per-job supervision gates, enroll the remaining targets, and
+qualify each baseline. Run M1 only with exact host baselines and launch methods
+recorded, using public host IDs in published evidence.
