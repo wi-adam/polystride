@@ -4,6 +4,7 @@
 
 These are intended targets, not supported or tested targets. Minimum OS versions
 remain to be chosen. The native developer CLI is outside this artifact matrix.
+Host-native lab agents and their control programs are also outside this matrix.
 
 | OS | CPU | Portable-artifact execution | Native execution |
 | --- | --- | --- | --- |
@@ -13,6 +14,21 @@ remain to be chosen. The native developer CLI is outside this artifact matrix.
 | macOS | ARM64 | Not tested | Not tested |
 | Windows | x86-64 | Not tested | Not tested |
 | Windows | ARM64 | Not tested | Not tested |
+
+## M0.5 infrastructure qualification
+
+Track lab qualification independently of portable-artifact acceptance.
+[The lab runbook](lab.md) describes the implementation and remaining gates.
+
+| Environment | Lab evidence | Qualification |
+| --- | --- | --- |
+| Local macOS ARM64 developer machine | TLS delivery, execution, report collection, failed controls | Developer baseline; implicit shell fallback observed |
+| Linux x86-64 / ARM64 | Not tested | Agent deployment and native controls open |
+| Windows x86-64 / ARM64 | Not tested | Agent deployment and native controls open |
+| macOS x86-64 | Not tested | Agent deployment and native controls open |
+
+The local result does not certify a strict direct-launch backend or a clean
+macOS baseline. See the [initial lab report](experiments/2026-10-20-m05-local-tls.md).
 
 ## Record per experiment
 
@@ -62,4 +78,5 @@ Commit concise reports under `docs/experiments/` when experiments exist, includi
 hashes, source revisions, commands, host baselines, failures, and qualifications.
 Do not commit credentials or secret-bearing host inventories.
 
-No experiment reports exist yet.
+The [initial M0.5 report](experiments/2026-10-20-m05-local-tls.md) concerns test
+infrastructure only. No portable-artifact experiment has been accepted.

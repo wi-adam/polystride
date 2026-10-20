@@ -1,0 +1,17 @@
+{
+  "coordinator": "lab.example.invalid:7443",
+  "server_name": "lab.example.invalid",
+  "ca_certificate": "artifacts/lab/ca.pem",
+  "host_id": "linux-x64-01",
+  "token_file": "artifacts/lab/agent.token",
+  "state_dir": "artifacts/lab/agent",
+  "poll_interval_ms": 2000,
+  "baseline": {
+    "os": "linux",
+    "os_version": "REPLACE_WITH_EXACT_OS_VERSION_AND_BUILD",
+    "hardware_arch": "x86_64",
+    "machine_kind": "unknown",
+    "baseline_id": "REPLACE_WITH_BASELINE_RECORD_ID",
+    "notes": "Operator declaration; record tools, security settings, reset procedure and qualifications separately."
+  }
+}

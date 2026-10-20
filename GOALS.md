@@ -43,6 +43,37 @@ All requirements are currently **unverified**. See
 M0 establishes the development scaffold; it establishes no portable execution
 claim.
 
+### M0.5 — Establish the execution laboratory
+
+Build the verification environment before the M1 bootstrap experiment. Use a
+host-native Rust resident agent that connects back to a coordinator. The test
+infrastructure can have separate platform builds; the artifact being tested must
+still be identical across targets.
+
+- [x] Define jobs, artifact identity, host baselines, and qualified evidence.
+- [x] Implement authenticated outbound polling, binary delivery, and durable
+  job/result storage in `polystride-lab`.
+- [x] Collect stdout/stderr bytes, exit status, deadlines, and before/after hashes.
+- [x] Preserve failed controls; refuse duplicate execution after interrupted
+  attempts; test duplicate delivery and restart-receipt behavior.
+- [ ] Qualify strict native process-spawn and explicit shell backends separately,
+  with controls that detect implicit shell fallback.
+- [ ] Add process-tree termination, hard resource limits, and agent crash cleanup.
+- [ ] Package startup/restart supervision and enroll the first four hosts:
+  Linux x86-64, Windows x86-64, Linux ARM64, and macOS ARM64.
+- [ ] Enroll macOS x86-64 and Windows ARM64 to complete the six-target matrix.
+- [ ] Verify host OS/CPU, translation status, security state, prerequisites, and
+  reset/clean-baseline procedure on each host.
+- [ ] Run native positive controls, malformed/wrong-architecture controls,
+  timeout controls, and connection-loss/restart controls on each enrolled host.
+- [ ] Demonstrate one unchanged test artifact's delivery and evidence collection
+  across the fleet, retaining unsupported-launch failures.
+
+The initial implementation is a trusted, single-process research harness.
+It is not yet the accepted M1 verification environment. See
+[the lab design and runbook](docs/lab.md) and
+[ADR 0002](docs/decisions/0002-pull-based-execution-lab.md).
+
 ### M1 — Prove the bootstrap boundary
 
 - [ ] Select and pin an APE baseline.
@@ -98,5 +129,6 @@ identical bytes on different hosts is a separate later property.
 
 ## Next task
 
-Design and run the M1 bootstrap experiment. Record the exact host baselines and
-launch methods before investing in a new executable format or linker.
+Complete M0.5's launch-backend and supervision gates, then enroll and qualify the
+test hosts. Run the M1 bootstrap experiment only with its exact host baselines and
+launch methods recorded.

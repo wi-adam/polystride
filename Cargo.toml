@@ -1,5 +1,6 @@
 [workspace]
-members = ["crates/polystride"]
+members = ["crates/polystride", "crates/polystride-lab"]
+default-members = ["crates/polystride"]
 resolver = "3"
 
 [workspace.package]
@@ -10,3 +11,6 @@ publish = false
 
 [workspace.lints.rust]
 unsafe_code = "forbid"
+
+[workspace.lints.clippy]
+pedantic = "warn"

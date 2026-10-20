@@ -1,0 +1,9 @@
+{
+  "listen": "127.0.0.1:7443",
+  "certificate": "artifacts/lab/server.pem",
+  "private_key": "artifacts/lab/server.key",
+  "state_dir": "artifacts/lab/coordinator",
+  "hosts": {
+    "linux-x64-01": "REPLACE_WITH_SHA256_OF_A_RANDOM_HOST_TOKEN"
+  }
+}

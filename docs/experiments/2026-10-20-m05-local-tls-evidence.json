@@ -1,0 +1,32 @@
+{
+  "source_revision": "1e1fb8b95d5442e5069f724463efc8010cc1d91f",
+  "dirty_tree": true,
+  "source_files_sha256": {
+    "Cargo.lock": "659d202808fc4aa366fbd9870152494c5b165dc194a9298c66fc030c1149467e",
+    "Cargo.toml": "0d7869f359fc378e8399c79bac4e1686fcbdcf678bbc55c48458e69cb9a92be6",
+    "crates/polystride-lab/Cargo.toml": "7ecc96c1751ab17a0cec42082ded7798e5ca6171caa8e2a5cea64082d865e35b",
+    "crates/polystride-lab/src/agent.rs": "864caa6342a8e1353ee67bf3e5785d73ae1ceaa8caed922b2d37e95330197863",
+    "crates/polystride-lab/src/lib.rs": "afc65bec71b3f234c0f7d026401d4d8db60429d2b2f93e15eb80e27518297222",
+    "crates/polystride-lab/src/main.rs": "f994e66521acb6141e6a04e5aa7305148a6e1966675a87c62778d90b0029a66f",
+    "crates/polystride-lab/src/model.rs": "03d79919ce215069bf3cc9583056bc1550d03e7870706bd9738402f842be17e4",
+    "crates/polystride-lab/src/runner.rs": "b08de3a6561a2847ef2d89eebf86ac765469009a83e466dae24aaee133f1172d",
+    "crates/polystride-lab/src/store.rs": "b75fd2feae866363a7d32178166e03268362dbbb76920f698ccd38481e25db4d",
+    "crates/polystride-lab/src/transport.rs": "b4b67f30894a738cd67ae427db34814b8701aae143c43e0f2f3cba945bd55e21",
+    "crates/polystride-lab/tests/behavior.rs": "9766c3aec612244141ba420a284aab24c161e99bd4f10ce9b9c962becb60d12f",
+    "examples/lab-control.rs": "4416233bc27f3e602a1afa90e23ebc510da9ddae2fd3962a97eabcc198aa4830",
+    "rust-toolchain.toml": "8bc51ecab82415fddd8489604f2424e137d71856e7f65cbdcfaa48850d794b46",
+    "scripts/lab-smoke.py": "f7a1a1f59d88eaf9e91197c798465155846dbcaf641b93faa50b281d5a78830f"
+  },
+  "agent_sha256": "2dee6cd76363dda4604fe48eebc2b30ce18252aab10b21d95a8203d0e16e9c64",
+  "control_sha256": "63b866c2c54c1d95970a22e05c4e30e0c0ed4afd90f9f8f3fbb83b5a4973c007",
+  "control_size": 519328,
+  "invalid_sha256": "38723a2e5e8a17aa7950dc008209944e898f69a7bd10a23c839d341e935fd5ca",
+  "shell_fallback_sentinel_sha256": "2b8cb0f91865a28b84fe269bd964d189d74db2ffc4fe5c7838bbc44fb5997926",
+  "tls_name_rejection": "pass",
+  "token_rejection": "pass",
+  "native_control_recipe": "pass",
+  "timeout_recorded_as_failure": "pass",
+  "invalid_executable_recorded_as_failure": "pass",
+  "implicit_shell_fallback_observed": true,
+  "qualified_platform_acceptance": false
+}

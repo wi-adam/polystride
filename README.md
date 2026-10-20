@@ -11,11 +11,12 @@ Native execution on x86-64 and ARM64 is the initial target.
 
 ## Status
 
-**Project scaffold only.** The workspace builds a small CLI with help and version
-output. It does not yet link, package, or launch portable executables. No
-cross-platform artifact has been validated.
+**M0.5 execution laboratory in progress.** The `polystride` CLI remains a scaffold.
+The new `polystride-lab` component delivers and runs ordinary test executables
+through resident agents that connect back to a TLS coordinator. This is an initial
+research harness; it does not establish portable executable support.
 
-The first milestone is to establish what can actually launch on clean systems.
+Before M1, qualify the testing infrastructure and enroll the execution hosts.
 One file running through a shell, an installed loader, or CPU emulation is useful
 evidence, but each qualification must be recorded.
 
@@ -34,6 +35,7 @@ See:
 - [Goals and milestones](GOALS.md)
 - [Architecture and unresolved questions](docs/architecture.md)
 - [Validation contract and target matrix](docs/validation.md)
+- [Execution lab design and runbook](docs/lab.md)
 - [Initial architecture decision](docs/decisions/0001-start-with-a-driver.md)
 - [Contributor and agent guidance](AGENTS.md)
 
@@ -41,7 +43,9 @@ See:
 
 The development toolchain is pinned to Rust 1.93.0. Rustup will use
 `rust-toolchain.toml`; install that toolchain and its rustfmt/clippy components
-before working offline. The scaffold has no third-party Rust dependencies.
+before working offline. The scaffold CLI has no third-party Rust dependencies;
+the lab uses locked dependencies for TLS, hashing, JSON, and atomic file
+publication. Fetch the lockfile's dependencies once before working offline.
 
 ```sh
 cargo run --locked --offline -- --help
@@ -52,16 +56,21 @@ cargo test --locked --offline --workspace
 ```
 
 With [just](https://github.com/casey/just) installed, `just check` runs formatting,
-Clippy, and the test harness. There are no behavioral tests yet; the CLI is a
-scaffold. Builds of this CLI are normal host-native binaries, not proof of the
-portable-artifact goal.
+Clippy (including the workspace's pedantic lints, with warnings denied), and
+behavioral tests, including actual execution of host-native controls.
+`just lab-smoke` exercises the coordinator and agent over local TLS and retains
+raw evidence under `artifacts/`; it also requires Python 3 and OpenSSL.
+Builds of these tools are normal host-native binaries, not proof of the
+portable-artifact goal. Use `cargo run -p polystride-lab -- --help` for lab commands.
 
 ## Repository layout
 
 ```text
 crates/polystride/  CLI entry point
+crates/polystride-lab/  resident execution agent and coordinator
 docs/              architecture, validation, and decision records
-examples/          small source programs for future portability experiments
+examples/          portability probes, native lab control, and sample lab configs
+scripts/           repeatable local lab smoke experiment
 GOALS.md           project objectives, milestones, and deferred scope
 ```
 

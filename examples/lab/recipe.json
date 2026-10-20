@@ -1,0 +1,11 @@
+{
+  "id": "control-linux-x64-001",
+  "host_id": "linux-x64-01",
+  "source_revision": "REPLACE_WITH_EXACT_SOURCE_REVISION_AND_DIRTY_TREE_EVIDENCE",
+  "args": ["bytes"],
+  "env": {},
+  "timeout_ms": 2000,
+  "expected_exit": 0,
+  "expected_stdout": [0, 255, 10],
+  "expected_stderr": []
+}

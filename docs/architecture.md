@@ -11,8 +11,12 @@ Status: initial hypotheses, not an implemented design.
 5. **Runtime boundary:** provide the filesystem, threading, networking, and other
    services expected by the program.
 
-The initial Rust workspace implements only CLI help and version output. The
-layering above identifies future responsibilities, not existing crates.
+The `polystride` CLI implements only help and version output. The layering above
+identifies future responsibilities, not existing product capabilities.
+`polystride-lab` is separate test infrastructure: a coordinator and host-native
+resident agent for executing probes and collecting evidence. It does not select
+payloads or participate in the portable artifact's bootstrap. See
+[the lab design](lab.md).
 
 ## Candidate payload designs
 
